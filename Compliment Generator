@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Compliments Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .compliment-box {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .compliment {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="compliment-box">
+    <div class="compliment" id="compliment">Click the button for a compliment!</div>
+    <button class="button" onclick="generateCompliment()">Generate Compliment</button>
+</div>
+
+<script>
+    function generateCompliment() {
+        const compliments = [
+            { text: "You are trés magnifique!", accent: "French" },
+            { text: "Du bist wundervoll, ja!", accent: "German" },
+            { text: "Tu eres increíble, ¡olé!", accent: "Spanish" },
+            { text: "Ты просто великолепен!", accent: "Russian" },
+            { text: "You’re a wee bonnie lad/lassie!", accent: "Scottish" },
+            { text: "Oye, eres chevere, ¡vale!", accent: "Mexican" },
+            { text: "You're smashing, darling!", accent: "British" },
+            { text: "Hai una bellezza fuori dal comune!", accent: "Italian" },
+            { text: "You're a real mensch!", accent: "Yiddish" },
+            { text: "Watashi wa anata o suki desu!", accent: "Japanese" },
+        ];
+
+        const randomIndex = Math.floor(Math.random() * compliments.length);
+        const compliment = compliments[randomIndex];
+
+        document.getElementById("compliment").textContent = `${compliment.text} (${compliment.accent})`;
+    }
+</script>
+
+</body>
+</html>
