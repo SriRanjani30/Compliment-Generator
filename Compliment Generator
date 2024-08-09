@@ -5,37 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Compliments Generator</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
             margin: 0;
+            overflow: hidden;
+            color: #fff;
         }
         .compliment-box {
             text-align: center;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.2);
+            padding: 60px 50px;
+            border-radius: 25px;
+            box-shadow: 0 30px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            animation: fadeIn 1.5s ease;
         }
         .compliment {
-            font-size: 1.5em;
-            margin-bottom: 20px;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            animation: slideIn 1s ease;
+            line-height: 1.5;
+            color: #f4f4f9;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 15px;
         }
         .button {
-            padding: 10px 20px;
-            font-size: 1em;
+            padding: 20px 40px;
+            font-size: 1.3em;
             border: none;
-            border-radius: 5px;
-            background-color: #007bff;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: #fff;
             cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
         .button:hover {
-            background-color: #0056b3;
+            background: linear-gradient(135deg, #5a67d8, #6b46c1);
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
     </style>
 </head>
@@ -59,12 +82,25 @@
             { text: "Hai una bellezza fuori dal comune!", accent: "Italian" },
             { text: "You're a real mensch!", accent: "Yiddish" },
             { text: "Watashi wa anata o suki desu!", accent: "Japanese" },
+            { text: "You light up the room, amigo!", accent: "Spanish" },
+            { text: "Your smile is sunshine!", accent: "English" },
+            { text: "Tu es la crème de la crème!", accent: "French" },
+            { text: "You are wunderbar!", accent: "German" },
+            { text: "Sei un vero tesoro!", accent: "Italian" },
+            { text: "You are fantastique!", accent: "French" },
+            { text: "¡Eres una estrella!", accent: "Spanish" },
+            { text: "Ты светишься как солнце!", accent: "Russian" },
+            { text: "You’re a gem, no doubt!", accent: "English" },
+            { text: "Tu est le meilleur!", accent: "French" }
         ];
 
         const randomIndex = Math.floor(Math.random() * compliments.length);
         const compliment = compliments[randomIndex];
 
-        document.getElementById("compliment").textContent = `${compliment.text} (${compliment.accent})`;
+        const complimentElement = document.getElementById("compliment");
+        complimentElement.textContent = `${compliment.text} (${compliment.accent})`;
+        complimentElement.style.animation = 'none';
+        setTimeout(() => complimentElement.style.animation = 'slideIn 1s ease', 10);
     }
 </script>
 
