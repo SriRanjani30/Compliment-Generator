@@ -90,6 +90,27 @@
             transform: scale(1.1);
         }
 
+        .language-selector {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            color: #f4f4f9;
+        }
+
+        .language-selector select {
+            padding: 10px;
+            border-radius: 15px;
+            border: none;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .language-selector select:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -110,6 +131,18 @@
     </div>
 
     <div class="compliment-box">
+        <div class="language-selector">
+            <label for="language">Choose a language: </label>
+            <select id="language">
+                <option value="english">English</option>
+                <option value="french">French</option>
+                <option value="german">German</option>
+                <option value="spanish">Spanish</option>
+                <option value="russian">Russian</option>
+                <option value="italian">Italian</option>
+                <option value="japanese">Japanese</option>
+            </select>
+        </div>
         <div class="compliment" id="compliment">Click the button for a compliment!</div>
         <button class="button" onclick="generateCompliment()">Generate Compliment</button>
         <button class="button" onclick="saveCompliment()">Save Compliment</button>
@@ -121,34 +154,59 @@
         }
 
         function generateCompliment() {
-            const compliments = [
-                { text: "You are trés magnifique!", accent: "French" },
-                { text: "Du bist wundervoll, ja!", accent: "German" },
-                { text: "Tu eres increíble, ¡olé!", accent: "Spanish" },
-                { text: "Ты просто великолепен!", accent: "Russian" },
-                { text: "You’re a wee bonnie lad/lassie!", accent: "Scottish" },
-                { text: "Oye, eres chevere, ¡vale!", accent: "Mexican" },
-                { text: "You're smashing, darling!", accent: "British" },
-                { text: "Hai una bellezza fuori dal comune!", accent: "Italian" },
-                { text: "You're a real mensch!", accent: "Yiddish" },
-                { text: "Watashi wa anata o suki desu!", accent: "Japanese" },
-                { text: "You light up the room, amigo!", accent: "Spanish" },
-                { text: "Your smile is sunshine!", accent: "English" },
-                { text: "Tu es la crème de la crème!", accent: "French" },
-                { text: "You are wunderbar!", accent: "German" },
-                { text: "Sei un vero tesoro!", accent: "Italian" },
-                { text: "You are fantastique!", accent: "French" },
-                { text: "¡Eres una estrella!", accent: "Spanish" },
-                { text: "Ты светишься как солнце!", accent: "Russian" },
-                { text: "You’re a gem, no doubt!", accent: "English" },
-                { text: "Tu est le meilleur!", accent: "French" }
-            ];
+            const language = document.getElementById("language").value;
 
-            const randomIndex = Math.floor(Math.random() * compliments.length);
-            const compliment = compliments[randomIndex];
+            const compliments = {
+                english: [
+                    "You light up the room!",
+                    "You're a gem, no doubt!",
+                    "Your smile is sunshine!",
+                    "You're simply amazing!"
+                ],
+                french: [
+                    "Tu es la crème de la crème!",
+                    "Vous êtes incroyable!",
+                    "Tu es un trésor!",
+                    "Tu es trés magnifique!"
+                ],
+                german: [
+                    "Du bist wunderbar!",
+                    "Du bist ein Schatz!",
+                    "Du bist fantastisch!",
+                    "Du bist wundervoll!"
+                ],
+                spanish: [
+                    "¡Eres una estrella!",
+                    "¡Eres increíble, olé!",
+                    "Eres un tesoro!",
+                    "¡Eres la mejor!"
+                ],
+                russian: [
+                    "Ты просто великолепен!",
+                    "Ты светишься как солнце!",
+                    "Ты замечательный человек!",
+                    "Ты неповторим!"
+                ],
+                italian: [
+                    "Sei un vero tesoro!",
+                    "Hai una bellezza fuori dal comune!",
+                    "Sei fantastico!",
+                    "Sei la migliore!"
+                ],
+                japanese: [
+                    "あなたは素晴らしいです！",
+                    "あなたは最高です！",
+                    "あなたの笑顔は太陽のようです！",
+                    "私はあなたが好きです！"
+                ]
+            };
+
+            const selectedCompliments = compliments[language];
+            const randomIndex = Math.floor(Math.random() * selectedCompliments.length);
+            const compliment = selectedCompliments[randomIndex];
 
             const complimentElement = document.getElementById("compliment");
-            complimentElement.textContent = `${compliment.text} (${compliment.accent})`;
+            complimentElement.textContent = compliment;
             complimentElement.style.animation = 'none';
             setTimeout(() => complimentElement.style.animation = 'slideIn 1s ease', 10);
         }
