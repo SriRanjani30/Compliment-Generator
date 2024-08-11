@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +18,7 @@
             overflow: hidden;
             color: #fff;
             transition: background 0.5s ease;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
         }
 
         .theme-selector {
@@ -53,7 +55,7 @@
 
         .compliment-box {
             text-align: center;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             padding: 60px 50px;
             border-radius: 25px;
             box-shadow: 0 30px 40px rgba(0, 0, 0, 0.3);
@@ -66,10 +68,12 @@
             margin-bottom: 40px;
             animation: slideIn 1s ease;
             line-height: 1.5;
-            color: #f4f4f9;
-            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
             padding: 20px;
             border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transition: background 0.3s ease;
         }
 
         .button {
@@ -112,16 +116,36 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 1em;
+            color: #f4f4f9;
         }
     </style>
 </head>
+
 <body class="theme-light">
 
     <div class="theme-selector">
@@ -148,6 +172,8 @@
         <button class="button" onclick="saveCompliment()">Save Compliment</button>
     </div>
 
+    <div class="footer">Enjoy your day with a smile!</div>
+
     <script>
         function setTheme(theme) {
             document.body.className = theme;
@@ -161,43 +187,50 @@
                     "You light up the room!",
                     "You're a gem, no doubt!",
                     "Your smile is sunshine!",
-                    "You're simply amazing!"
+                    "You're simply amazing!",
+                    "You are awesome beyond words!"
                 ],
                 french: [
                     "Tu es la crème de la crème!",
                     "Vous êtes incroyable!",
                     "Tu es un trésor!",
-                    "Tu es trés magnifique!"
+                    "Tu es trés magnifique!",
+                    "Ton sourire illumine la pièce!"
                 ],
                 german: [
                     "Du bist wunderbar!",
                     "Du bist ein Schatz!",
                     "Du bist fantastisch!",
-                    "Du bist wundervoll!"
+                    "Du bist wundervoll!",
+                    "Du bringst die Sonne zum Scheinen!"
                 ],
                 spanish: [
                     "¡Eres una estrella!",
                     "¡Eres increíble, olé!",
                     "Eres un tesoro!",
-                    "¡Eres la mejor!"
+                    "¡Eres la mejor!",
+                    "Tu sonrisa ilumina todo!"
                 ],
                 russian: [
                     "Ты просто великолепен!",
                     "Ты светишься как солнце!",
                     "Ты замечательный человек!",
-                    "Ты неповторим!"
+                    "Ты неповторим!",
+                    "Ты приносишь радость в жизни!"
                 ],
                 italian: [
                     "Sei un vero tesoro!",
                     "Hai una bellezza fuori dal comune!",
                     "Sei fantastico!",
-                    "Sei la migliore!"
+                    "Sei la migliore!",
+                    "Il tuo sorriso è contagioso!"
                 ],
                 japanese: [
                     "あなたは素晴らしいです！",
                     "あなたは最高です！",
                     "あなたの笑顔は太陽のようです！",
-                    "私はあなたが好きです！"
+                    "私はあなたが好きです！",
+                    "あなたは輝いています！"
                 ]
             };
 
@@ -222,4 +255,5 @@
     </script>
 
 </body>
+
 </html>
